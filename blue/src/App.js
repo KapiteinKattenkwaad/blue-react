@@ -1,45 +1,8 @@
 import './App.css';
-import Proptypes from "prop-types"
 import {useEffect, useState} from "react";
 import styled from "@emotion/styled"
-import Button from '@mui/material/Button';
-
-const PokemonRow = ({pokemon, onSelect}) => {
-    return (
-        <tr>
-            <td>{pokemon.name}</td>
-            <td>{pokemon.type.join(', ')}</td>
-            <td onClick={() => onSelect(pokemon)}>
-                <Button variant="contained">Select</Button>
-            </td>
-        </tr>
-    )
-}
-
-const PokemonInfo = ({national_number, name}) => {
-    return (
-        <div>
-            <h2>
-                {name}
-            </h2>
-            <p>
-                {national_number}
-            </p>
-        </div>
-    )
-}
-
-PokemonRow.propTypes = {
-    pokemon: Proptypes.object,
-    type: Proptypes.arrayOf(Proptypes.string),
-    name: Proptypes.arrayOf(Proptypes.string),
-    onSelect: Proptypes.func
-}
-
-PokemonInfo.propTypes = {
-    name: Proptypes.string,
-    national_number: Proptypes.string,
-}
+import PokemonRow from "./components/PokemonRow";
+import PokemonInfo from "./components/PokemonInfo";
 
 const Title = styled.h1`
     text-align: center;
@@ -47,10 +10,10 @@ const Title = styled.h1`
 
 const Input = styled.input`
      text-align: left;
-  margin-right: auto;
-  display: inline-block;
-  margin-bottom: 2rem;
-  border: 2px solid black;
+      margin-right: auto;
+      display: inline-block;
+      margin-bottom: 2rem;
+      border: 2px solid black;
 `
 
 function App() {
