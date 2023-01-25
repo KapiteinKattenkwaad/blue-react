@@ -1,12 +1,21 @@
 .App {
-  text-align: center;
+  margin-inline: auto;
+  max-width: 800px;
+  padding-inline: 1rem;
 }
 
 .title {
-
+  text-align: center;
 }
 
 th {
   /*text-align: left;*/
   font-size: x-large;
+}
+
+input {
+  text-align: left;
+  margin-right: auto;
+  display: inline-block;
+  margin-bottom: 2rem;
 }
