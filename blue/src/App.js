@@ -1,9 +1,9 @@
 import './App.css';
-import pokemons from './pokemon.json'
+// import pokemons from './pokemon.json'
 import Proptypes from "prop-types"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-const pokies = pokemons.results
+// const pokies = pokemons.results
 
 const PokemonRow = ({pokemon, onSelect}) => {
     return (
@@ -38,13 +38,20 @@ PokemonRow.propTypes = {
 }
 
 PokemonInfo.propTypes = {
-    name: Proptypes.string.isRequired,
+    name: Proptypes.string,
     national_number: Proptypes.string,
 }
 
 function App() {
     const [filter, setFilter] = useState('')
     const [selectedItem, setSelectedItem] = useState(null)
+    const [pokemons, setPokemon] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/blue-react/pokemon.json')
+            .then((resp) => resp.json())
+            .then((data) => setPokemon(data.results))
+    }, [])
 
     return (
         <div className="App">
@@ -68,7 +75,7 @@ function App() {
                 </tr>
                 </thead>
                 <tbody>
-                {pokies
+                {pokemons
                     .filter((pokemon) => pokemon.name.toLowerCase().includes(filter.toLowerCase()))
                     .slice(0, 20)
                     .map((pokemon, index) => {
