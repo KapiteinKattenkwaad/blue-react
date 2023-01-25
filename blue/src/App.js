@@ -1,9 +1,8 @@
 import './App.css';
-// import pokemons from './pokemon.json'
 import Proptypes from "prop-types"
 import {useEffect, useState} from "react";
-
-// const pokies = pokemons.results
+import styled from "@emotion/styled"
+import Button from '@mui/material/Button';
 
 const PokemonRow = ({pokemon, onSelect}) => {
     return (
@@ -11,7 +10,7 @@ const PokemonRow = ({pokemon, onSelect}) => {
             <td>{pokemon.name}</td>
             <td>{pokemon.type.join(', ')}</td>
             <td onClick={() => onSelect(pokemon)}>
-                <button>Select</button>
+                <Button variant="contained">Select</Button>
             </td>
         </tr>
     )
@@ -42,6 +41,18 @@ PokemonInfo.propTypes = {
     national_number: Proptypes.string,
 }
 
+const Title = styled.h1`
+    text-align: center;
+`
+
+const Input = styled.input`
+     text-align: left;
+  margin-right: auto;
+  display: inline-block;
+  margin-bottom: 2rem;
+  border: 2px solid black;
+`
+
 function App() {
     const [filter, setFilter] = useState('')
     const [selectedItem, setSelectedItem] = useState(null)
@@ -55,10 +66,10 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className='title'>
+            <Title>
                 Pokemon seach
-            </h1>
-            <input
+            </Title>
+            <Input
                 value={filter}
                 onChange={(event) => setFilter(event.target.value)}
                 type="search"/>
